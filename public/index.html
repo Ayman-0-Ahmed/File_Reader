@@ -7,18 +7,6 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    <!--img class="mainPic" src="images/ThisPC.png" alt="">
-    <div class="padd">
-        <div class="address-bar">
-            <img class="fileIco" src="images/PcIcon.png" alt="">
-            <div class="address-txt">This PC > </div>
-        </div>
-        <div class="volumes" id="volumes"></div>
-    </div-->
-
-    <!--h1>Node.js and Python Communication</h1-->
-
-    <!-- Send Message Form -->
     <form id="sendMessageForm">
         <input type="text" id="messageInput" placeholder="Enter message to send to Python" required />
         <button type="submit">Send</button>
@@ -30,7 +18,6 @@
     </div>
 
     <script>
-        // Function to append messages to the console
         function appendToConsole(message) {
             const consoleDiv = document.getElementById('console');
             const newMessage = document.createElement('p');
@@ -64,34 +51,28 @@
                 appendToConsole('Error sending message to Python.');
             }
         });
-        setInterval(fetchPythonMessages, 1000);
-    </script>
-    <!--script>
-        let vol = document.getElementById("volumes");
-        // Function to fetch messages from Python and display them
         async function fetchPythonMessages() {
             try {
                 const response = await fetch('/get-python-messages');
                 const data = await response.json();
                 const messages = data.messages;
-                console.log("try")
 
                 messages.forEach(msg => {
-                    vol.innerHTML = msg;
+                    appendToConsole(`Python: ${msg}`);
                 });
 
                 // Clear the messages on the server after fetching to prevent duplicates
-                await fetch('/clear-python-messages', { method: 'POST' });
+                if (messages.length > 0) {
+                    const clearResponse = await fetch('/clear-python-messages', { method: 'POST' });
+                    const clearData = await clearResponse.json();
+                    console.log(clearData.message);
+                }
             } catch (error) {
                 console.error('Error fetching messages:', error);
                 appendToConsole('Error fetching messages from Python.');
             }
         }
         setInterval(fetchPythonMessages, 1000);
-    </script-->
-
-    <!--// Poll for Python messages every 5 seconds
-        setInterval(fetchPythonMessages, 1000);
-    </script-->
+    </script>
 </body>
 </html>
