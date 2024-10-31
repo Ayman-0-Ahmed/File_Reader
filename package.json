@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "build": "npm install express axios body-parser multer"
+    "build": "npm install"
   },
   "keywords": [],
   "author": "",
