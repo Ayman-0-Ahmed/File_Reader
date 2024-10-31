@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, '/public/uploads');
+        cb(null, './public/uploads');
     },
     filename: (req, file, cb) => {
         cb(null, Date.now() + path.extname(file.originalname));
@@ -70,5 +70,5 @@ app.get('/', (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Node.js server running at http://localhost:${PORT}`);
+    console.log(`Node.js server running at Port:${PORT}`);
 });
