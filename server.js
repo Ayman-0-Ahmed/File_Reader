@@ -1,6 +1,6 @@
 const WebSocket = require('ws');
 
-const targetUrl = process.env.TARGET_URL || 'wss://your-python-service.onrender.com';
+const targetUrl = process.env.TARGET_URL || 'ws://localhost:8080';
 const ws = new WebSocket(targetUrl);
 
 ws.on('open', () => {
