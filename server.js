@@ -14,8 +14,8 @@ app.get('/', (req, res) => {
 
 app.get('/send', (req, res) => {
   const path = req.url
-  console.log(path)
-  ws.send(path)
+  console.log("run " + path)
+  ws.send("run " + path)
 })
 
 wss.on('connection', (ws) => {
