@@ -12,6 +12,12 @@ app.get('/', (req, res) => {
   res.send('Hello over HTTP!')
 })
 
+app.get('/send', (req, res) => {
+  const path = req.url
+  console.log(path)
+  ws.send(path)
+})
+
 wss.on('connection', (ws) => {
   console.log('WebSocket client connected')
 
